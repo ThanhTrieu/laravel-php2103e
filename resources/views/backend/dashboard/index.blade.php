@@ -1,6 +1,7 @@
 {{-- ke thua layout view --}}
 @extends('backend.layout')
 
+@section('title', 'Admin - Dashboard')
 {{-- xu ly cho components page heading --}}
 @section('pageHeading', 'Dashboard')
 @php

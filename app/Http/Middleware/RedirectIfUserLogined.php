@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckUserLogin
+class RedirectIfUserLogined
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,13 @@ class CheckUserLogin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $params = null)
+    public function handle(Request $request, Closure $next)
     {
         $user = $request->session()->get('username');
-        if($user !== '' && $user !== null && $params === 'admin'){
-            return $next($request);
+        if($user !== null){
+            // da dang nhap roi - quay lai dung trang dang o
+            return redirect()->back();
         }
-        return redirect()->route('admin.login');
+        return $next($request);
     }
 }
