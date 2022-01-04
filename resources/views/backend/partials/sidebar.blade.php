@@ -24,7 +24,18 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('admin.brands') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Brands</span></a>
+            <span>Brands</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.roles') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Roles</span>
+        </a>
     </li>
 
     <!-- Divider -->

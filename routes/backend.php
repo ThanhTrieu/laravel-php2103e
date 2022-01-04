@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\LoginController;
+use App\Http\Controllers\Backend\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::prefix('admin')
         // as('admin.') : tien to cho name routes
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); //admin.dashboard
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
+        Route::get('/roles', [RoleController::class, 'index'])->name('roles');
+        Route::post('/add-role', [RoleController::class, 'addRole'])->name('add.role');
     });

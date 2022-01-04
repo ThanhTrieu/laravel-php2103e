@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QueriesTestController;
 
 
 /*
@@ -16,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('query')->group(function () {
+    Route::get('/insert-role',[QueriesTestController::class, 'insertRole']);
+    Route::get('/update-role',[QueriesTestController::class, 'updateRole']);
+    Route::post('/delete-role/{id}',[QueriesTestController::class, 'deleteRole']);
+    Route::get('/select-role', [QueriesTestController::class, 'selectRole']);
 });

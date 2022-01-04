@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use voku\helper\AntiXSS;
 use App\Http\Requests\PostLoginAdmin as RequestLogin;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -25,10 +26,20 @@ class LoginController extends Controller
         $password = $request->input('password'); // $_POST['password']
         $password = $antiXSS->xss_clean($password);
 
-        if($username === 'admin@gmail.com' && $password === '12345678') {
+        $infoUser = DB::table('admins')
+                        ->select('id','username','email', 'phone', 'status')
+                        ->where([
+                            'email' => $username,
+                            'password' => $password,
+                            'status' => 1
+                        ])->first();
+
+        if($infoUser !== null) {
             // luu session
-            $request->session()->put('username', $username);
-            // $_SESSION['username'] = $username;
+            $request->session()->put('username', $infoUser->username);
+            $request->session()->put('idUser', $infoUser->id);
+            $request->session()->put('emailUser', $infoUser->email);
+
             return redirect()->route('admin.dashboard');
         } else {
             return redirect()->back()->with('invalidLogin', 'account not exist');
@@ -39,7 +50,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         // xoa session
-        $request->session()->forget(['username']);
+        $request->session()->forget(['username', 'idUser', 'emailUser']);
         //quay ve form login
         return redirect()->route('admin.login');
     }
