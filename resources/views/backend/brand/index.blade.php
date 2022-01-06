@@ -13,6 +13,47 @@ $buttonReport = false;
     <div class="row">
         <div class="col">
             <p> This is brands page !</p>
+            <a class="btn btn-primary" href="{{ route('admin.add.brand') }}"> Add Brand</a>
+
+            @if (session('successBrand'))
+                <div class="alert alert-success my-3">
+                    {{ session('successBrand') }}
+                </div>
+            @endif
+
+            <table class="table table-hover my-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nane</th>
+                        <th>Logo</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th width="5%" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($brands as $key => $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>
+                                <img src="{{ asset('storage/images/'.$item->logo) }}" width="50%" />
+                            </td>
+                            <td>{!! $item->description !!}</td>
+                            <td>{{ $item->status == 1 ? 'Active' : 'Deactive' }}</td>
+                            <td>
+                                <a class="btn btn-info" href="#"> Edit</a>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger"> Delete</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {{-- Phan trang --}}
+            {{ $brands->links() }}
         </div>
     </div>
 @endsection

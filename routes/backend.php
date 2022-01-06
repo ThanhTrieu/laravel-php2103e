@@ -38,7 +38,11 @@ Route::prefix('admin')
     ->group(function () {
         // as('admin.') : tien to cho name routes
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); //admin.dashboard
+
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
+        Route::get('/add-brand', [BrandController::class, 'addBrand'])->name('add.brand');
+        Route::post('/handle-add-brand',[BrandController::class, 'handleAddBrand'])->name('handle.add.brand');
+
         Route::get('/roles', [RoleController::class, 'index'])->name('roles');
         Route::post('/add-role', [RoleController::class, 'addRole'])->name('add.role');
     });
