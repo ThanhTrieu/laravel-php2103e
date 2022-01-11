@@ -42,6 +42,10 @@ Route::prefix('admin')
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
         Route::get('/add-brand', [BrandController::class, 'addBrand'])->name('add.brand');
         Route::post('/handle-add-brand',[BrandController::class, 'handleAddBrand'])->name('handle.add.brand');
+        Route::post('/delete-brand', [BrandController::class, 'deleteBrand'])->name('delete.brand');
+        // detail brand
+        Route::get('edit/{slug}~{id}', [BrandController::class, 'editBrand'])->name('edit.brand');
+        Route::post('handle-edit-brand/{id}', [BrandController::class, 'handleEdit'])->name('handle.edit.brand');
 
         Route::get('/roles', [RoleController::class, 'index'])->name('roles');
         Route::post('/add-role', [RoleController::class, 'addRole'])->name('add.role');

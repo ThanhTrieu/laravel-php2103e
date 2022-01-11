@@ -43,10 +43,10 @@ $buttonReport = false;
                             <td>{!! $item->description !!}</td>
                             <td>{{ $item->status == 1 ? 'Active' : 'Deactive' }}</td>
                             <td>
-                                <a class="btn btn-info" href="#"> Edit</a>
+                                <a class="btn btn-info" href="{{ route('admin.edit.brand',['slug'=>$item->slug, 'id' => $item->id]) }}"> Edit</a>
                             </td>
                             <td>
-                                <button class="btn btn-danger"> Delete</button>
+                                <button id="{{ $item->id }}"" class="btn btn-danger js-deleteBrand"> Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -57,3 +57,7 @@ $buttonReport = false;
         </div>
     </div>
 @endsection
+@push('javascripts')
+{{-- link js o day --}}
+<script src="{{ asset('backend/js/brand.js') }}"></script>
+@endpush
