@@ -1,5 +1,49 @@
 <?php
 
+if(!function_exists('getDataProductsDemo')){
+    function getDataProductsDemo() {
+        return [
+            [
+                'id' => 1,
+                'name' => 'Fancy Product',
+                'image' => 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+                'price' => 10000
+            ],
+            [
+                'id' => 2,
+                'name' => 'Special Item',
+                'image' => 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+                'price' => 7000
+            ],
+            [
+                'id' => 3,
+                'name' => 'Sale Item',
+                'image' => 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+                'price' => 1000
+            ],
+            [
+                'id' => 4,
+                'name' => 'Popular Item',
+                'image' => 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+                'price' => 5000
+            ]
+        ];
+    }
+}
+
+if(!function_exists('getDataProductsDemoById')){
+    function getDataProductsDemoById($id = 0) {
+        $data = getDataProductsDemo();
+        $info = [];
+        foreach($data as $item) {
+            if($item['id'] == $id){
+                $info = $item;
+            }
+        }
+        return $info;
+    }
+}
+
 if(!function_exists('slugify')) {
     function slugify($title, $replacement = '-')
     {
