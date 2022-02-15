@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\TestController;
 
 
 /*
@@ -16,6 +17,8 @@ use App\Http\Controllers\Frontend\CartController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/create-token', [TestController::class, 'createToken']);
 
 Route::as('frontend.')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');

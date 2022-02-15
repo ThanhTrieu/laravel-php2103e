@@ -8,11 +8,13 @@
         "php": "^7.3|^8.0",
         "bumbummen99/shoppingcart": "^4.1",
         "doctrine/dbal": "^3.2",
+        "firebase/php-jwt": "^6.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "paragonie/sodium_compat": "^1.17",
         "voku/anti-xss": "^4.1"
     },
     "require-dev": {
